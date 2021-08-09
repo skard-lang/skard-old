@@ -19,6 +19,7 @@ typedef enum
     OP_RETURN,  //!< Return instruction
 } OpCode;
 
+
 /**
  * @brief Data structure that holds one chunk of bytecode.
  *
@@ -30,12 +31,13 @@ typedef struct
     uint8_t *code;  //!< Pointer to the first byte in chunk
 } Chunk;
 
+
 /**
  * @brief Initializes default values for chunk.
  *
  * @details This must be called before any other function interacts with the chunk.
  *
- * @note The chunk must be unitiliazed or freed by freeChunk() before using this function
+ * @note The chunk must be uninitialised or freed by freeChunk() before using this function
  *
  * @param chunk pointer to the chunk
  *

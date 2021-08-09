@@ -23,9 +23,9 @@ int disassembleInstruction(Chunk *chunk, int offset)
     switch (instruction)
     {
         case OP_RETURN:
-            return simpleInstruction("OP_RETURN", offset);
+            return disassembleSimpleInstruction("OP_RETURN", offset);
         default:
-            return unknownInstruction(instruction, offset);
+            return disassembleUnknownInstruction(instruction, offset);
     }
 }
 

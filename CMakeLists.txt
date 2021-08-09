@@ -10,7 +10,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMOCKA_ROOT_DIR "${CMAKE_SOURCE_DIR}/lib/cmocka-1.0.0")
 
 # skard-lib LIBRARY
-add_library(skard-lib STATIC skard-lib/src/skard.h skard-lib/src/chunk.h skard-lib/src/chunk.c skard-lib/src/memory.c skard-lib/src/memory.h skard-lib/src/error.h skard-lib/src/error.c skard-lib/src/debug.c skard-lib/src/debug.h)
+add_library(skard-lib STATIC skard-lib/src/skard.h skard-lib/src/chunk.h skard-lib/src/chunk.c skard-lib/src/memory.c skard-lib/src/memory.h skard-lib/src/error.h skard-lib/src/error.c skard-lib/src/debug.c skard-lib/src/debug.h skard-lib/src/value.c skard-lib/src/value.h)
 
 # cSkard EXECUTABLE
 add_executable(cSkard skard-runtime/src/main.c)
