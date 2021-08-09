@@ -16,7 +16,7 @@
  */
 typedef enum
 {
-    OP_RETURN,
+    OP_RETURN,  //!< Return instruction
 } OpCode;
 
 /**
@@ -25,9 +25,9 @@ typedef enum
  */
 typedef struct
 {
-    int count; //!< Number of bytes in chunk
-    int capacity; //!< Number of allocated bytes for chunk
-    uint8_t *code; //!< Pointer to the first byte in chunk
+    int count;  //!< Number of bytes in chunk
+    int capacity;  //!< Number of allocated bytes for chunk
+    uint8_t *code;  //!< Pointer to the first byte in chunk
 } Chunk;
 
 /**

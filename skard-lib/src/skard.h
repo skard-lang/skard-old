@@ -9,5 +9,7 @@
 
 #include "chunk.h"
 
+#include "debug.h"
+
 
 #endif //CSKARD_SKARD_H
