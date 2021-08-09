@@ -37,7 +37,7 @@ typedef struct
  *
  * @details This must be called before any other function interacts with the chunk.
  *
- * @note The chunk must be uninitialised or freed by freeChunk() before using this function
+ * @note The chunk must be uninitialized or freed by freeChunk() before using this function
  *
  * @param chunk pointer to the chunk
  *
@@ -48,7 +48,7 @@ void initChunk(Chunk *chunk);
 /**
  * @brief Writes one byte of bytecode to the end of the chunk.
  *
- * @note initChunk()
+ * @note The chunk must be initialized with function initChunk() before using this function for the first time.
  *
  * @param chunk pointer to the chunk
  * @param byte byte to be added to the end of the chunk

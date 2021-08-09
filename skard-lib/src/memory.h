@@ -55,6 +55,7 @@ reallocate(pointer, sizeof(type) * (capacity), 0)
  * @param pointer pointer to the memory area to be changed (can be NULL)
  * @param oldSize old size of memory area in bytes (can be 0)
  * @param newSize new size of memory area in bytes (can be 0)
+ *
  * @return On success, returns the pointer to the beginning of newly allocated memory or NULL if newSize is 0.
  * Freeing is left for the caller. On failure, exits the program with an appropriate exit code and error message.
  *
