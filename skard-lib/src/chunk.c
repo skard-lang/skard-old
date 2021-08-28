@@ -105,7 +105,18 @@ void writeChunk(Chunk *chunk, uint8_t byte, size_t line)
 
 void writeConstant(Chunk *chunk, Value value, size_t line)
 {
+    size_t index = addConstant(chunk, value);
+    if (index <= UINT8_MAX)
+    {
+        writeChunk(chunk, OP_CONSTANT, line);
+        writeChunk(chunk, index & 0xFF, line);
+        return;
+    }
 
+    writeChunk(chunk, OP_CONSTANT_LONG, line);
+    writeChunk(chunk, index & 0xFF, line);
+    writeChunk(chunk, (index >> 8) & 0xFF, line);
+    writeChunk(chunk, (index >> 16) & 0xFF, line);
 }
 
 
