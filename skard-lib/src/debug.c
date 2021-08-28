@@ -6,7 +6,7 @@ void disassembleChunk(Chunk *chunk, const char *name)
 {
     printf("=== %s ===\n", name);
 
-    int offset = 0;
+    size_t offset = 0;
 
     while (offset < chunk->count)
     {
@@ -14,9 +14,9 @@ void disassembleChunk(Chunk *chunk, const char *name)
     }
 }
 
-int disassembleInstruction(Chunk *chunk, int offset)
+size_t disassembleInstruction(Chunk *chunk, size_t offset)
 {
-    printf("%06d ", offset);
+    printf("%06zu ", offset);
 
     uint8_t instruction = chunk->code[offset];
 
@@ -24,18 +24,22 @@ int disassembleInstruction(Chunk *chunk, int offset)
     {
         case OP_RETURN:
             return disassembleSimpleInstruction("OP_RETURN", offset);
+        case OP_CONSTANT:
+            break;
+        case OP_CONSTANT_LONG:
+            break;
         default:
             return disassembleUnknownInstruction(instruction, offset);
     }
 }
 
-int disassembleSimpleInstruction(const char *name, int offset)
+size_t disassembleSimpleInstruction(const char *name, size_t offset)
 {
     printf("%s\n", name);
     return offset + 1;
 }
 
-int disassembleUnknownInstruction(uint8_t instruction, int offset)
+size_t disassembleUnknownInstruction(uint8_t instruction, size_t offset)
 {
     printf("Unknown: %d\n", instruction);
     return offset + 1;

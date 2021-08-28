@@ -22,21 +22,22 @@ typedef struct
     ValueType type;
     union
     {
-        bool boolean;
-        double real;
-        int64_t integer;
+        bool sk_boolean;
+        double sk_real;
+        int64_t sk_integer;
     } as;
 } Value;
 
 typedef struct
 {
-    int capacity;
-    int count;
+    size_t capacity;
+    size_t count;
     Value *values;
 } ValueArray;
 
 void initValueArray(ValueArray *array);
-void writeValueArray(ValueArray *array, Value value);
 void freeValueArray(ValueArray *array);
+
+void writeValueArray(ValueArray *array, Value value);
 
 #endif //CSKARD_VALUE_H

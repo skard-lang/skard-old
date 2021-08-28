@@ -8,23 +8,29 @@ void initChunk(Chunk *chunk)
     chunk->capacity = 0;
     chunk->count = 0;
     chunk->code = NULL;
+
+    initValueArray(&chunk->constants);
 }
+
+void freeChunk(Chunk *chunk)
+{
+    CSKARD_FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
+
+    freeValueArray(&chunk->constants);
+
+    initChunk(chunk);
+}
+
 
 void writeChunk(Chunk *chunk, uint8_t byte)
 {
     if (chunk->capacity < chunk->count + 1)
     {
-        int oldCapacity = chunk->capacity;
+        size_t oldCapacity = chunk->capacity;
         chunk->capacity = CSKARD_GROW_CAPACITY(oldCapacity);
         chunk->code = CSKARD_GROW_ARRAY(uint8_t, chunk->code, oldCapacity, chunk->capacity);
     }
 
     chunk->code[chunk->count] = byte;
     chunk->count++;
-}
-
-void freeChunk(Chunk *chunk)
-{
-    CSKARD_FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
-    initChunk(chunk);
 }

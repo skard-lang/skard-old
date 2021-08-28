@@ -19,7 +19,7 @@ void disassembleChunk(Chunk *chunk, const char *name);
  *
  * @return Returns offset of the next instruction depending on the size of the current instruction.
  */
-int disassembleInstruction(Chunk *chunk, int offset);
+size_t disassembleInstruction(Chunk *chunk, size_t offset);
 
 /**
  * @brief Disassembles one simple instruction (with no other associated instructions).
@@ -31,7 +31,7 @@ int disassembleInstruction(Chunk *chunk, int offset);
  *
  * @return Returns possible offset of the next instruction.
  */
-static int disassembleSimpleInstruction(const char *name, int offset);
+size_t disassembleSimpleInstruction(const char *name, size_t offset);
 
 /**
  * @brief Disassembles one unknown instruction (usually wrong byte).
@@ -43,6 +43,6 @@ static int disassembleSimpleInstruction(const char *name, int offset);
  *
  * @return Returns possible offset of the next instruction.
  */
-static int disassembleUnknownInstruction(uint8_t instruction, int offset);
+size_t disassembleUnknownInstruction(uint8_t instruction, size_t offset);
 
 #endif //CSKARD_DEBUG_H

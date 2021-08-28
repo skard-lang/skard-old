@@ -9,6 +9,8 @@
 
 #include <stdint.h>
 
+#include "value.h"
+
 /**
  * @brief Enum of all available operation codes.
  *
@@ -17,6 +19,8 @@
 typedef enum
 {
     OP_RETURN,  //!< Return instruction
+    OP_CONSTANT,
+    OP_CONSTANT_LONG
 } OpCode;
 
 
@@ -26,9 +30,10 @@ typedef enum
  */
 typedef struct
 {
-    int count;  //!< Number of bytes in chunk
-    int capacity;  //!< Number of allocated bytes for chunk
+    size_t count;  //!< Number of bytes in chunk
+    size_t capacity;  //!< Number of allocated bytes for chunk
     uint8_t *code;  //!< Pointer to the first byte in chunk
+    ValueArray constants;
 } Chunk;
 
 
@@ -46,6 +51,18 @@ typedef struct
 void initChunk(Chunk *chunk);
 
 /**
+ * @brief Frees memory allocated for chunk.
+ *
+ * @details This must be called on every chunk initialized with initChunk() to prevent memory leaks.
+ *
+ * @param chunk pointer to the chunk
+ *
+ * @relatedalso Chunk
+ */
+void freeChunk(Chunk *chunk);
+
+
+/**
  * @brief Writes one byte of bytecode to the end of the chunk.
  *
  * @note The chunk must be initialized with function initChunk() before using this function for the first time.
@@ -57,15 +74,7 @@ void initChunk(Chunk *chunk);
  */
 void writeChunk(Chunk *chunk, uint8_t byte);
 
-/**
- * @brief Frees memory allocated for chunk.
- *
- * @details This must be called on every chunk initialized with initChunk() to prevent memory leaks.
- *
- * @param chunk pointer to the chunk
- *
- * @relatedalso Chunk
- */
-void freeChunk(Chunk *chunk);
+
+int add
 
 #endif //CSKARD_CHUNK_H
