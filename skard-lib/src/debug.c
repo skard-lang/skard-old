@@ -29,13 +29,13 @@ int disassembleInstruction(Chunk *chunk, int offset)
     }
 }
 
-static int simpleInstruction(const char *name, int offset)
+int disassembleSimpleInstruction(const char *name, int offset)
 {
     printf("%s\n", name);
     return offset + 1;
 }
 
-static int unknownInstruction(uint8_t instruction, int offset)
+int disassembleUnknownInstruction(uint8_t instruction, int offset)
 {
     printf("Unknown: %d\n", instruction);
     return offset + 1;

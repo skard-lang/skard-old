@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 /**
- * @brief
+ * @brief Enum of all possible value types.
  */
 typedef enum
 {
@@ -14,6 +14,9 @@ typedef enum
     VAL_INT
 } ValueType;
 
+/**
+ * @brief Data structure that holds one value and its type.
+ */
 typedef struct
 {
     ValueType type;
@@ -24,5 +27,16 @@ typedef struct
         int64_t integer;
     } as;
 } Value;
+
+typedef struct
+{
+    int capacity;
+    int count;
+    Value *values;
+} ValueArray;
+
+void initValueArray(ValueArray *array);
+void writeValueArray(ValueArray *array, Value value);
+void freeValueArray(ValueArray *array);
 
 #endif //CSKARD_VALUE_H
