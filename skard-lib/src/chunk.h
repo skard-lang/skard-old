@@ -11,6 +11,22 @@
 
 #include "value.h"
 
+typedef struct
+{
+    size_t count;
+    size_t capacity;
+    size_t *lines;
+} LineArray;
+
+void initLineArray(LineArray *array);
+void freeLineArray(LineArray *array);
+
+void writeNumberLineArray(LineArray *array, size_t number);
+
+void addLineArray(LineArray *array, size_t line);
+size_t getLineLineArray(LineArray *array, size_t offset);
+
+
 /**
  * @brief Enum of all available operation codes.
  *
@@ -33,6 +49,7 @@ typedef struct
     size_t count;  //!< Number of bytes in chunk
     size_t capacity;  //!< Number of allocated bytes for chunk
     uint8_t *code;  //!< Pointer to the first byte in chunk
+    LineArray lines;
     ValueArray constants;
 } Chunk;
 
@@ -62,6 +79,9 @@ void initChunk(Chunk *chunk);
 void freeChunk(Chunk *chunk);
 
 
+size_t getLineChunk(Chunk *chunk, size_t offset);
+
+
 /**
  * @brief Writes one byte of bytecode to the end of the chunk.
  *
@@ -72,9 +92,11 @@ void freeChunk(Chunk *chunk);
  *
  * @relatedalso Chunk
  */
-void writeChunk(Chunk *chunk, uint8_t byte);
+void writeChunk(Chunk *chunk, uint8_t byte, size_t line);
+
+void writeConstant(Chunk *chunk, Value value, size_t line);
 
 
-int add
+size_t addConstant(Chunk *chunk, Value value);
 
 #endif //CSKARD_CHUNK_H
