@@ -117,6 +117,8 @@ void writeConstant(Chunk *chunk, Value value, size_t line)
     writeChunk(chunk, index & 0xFF, line);
     writeChunk(chunk, (index >> 8) & 0xFF, line);
     writeChunk(chunk, (index >> 16) & 0xFF, line);
+
+    // TODO: Check for overflow!
 }
 
 

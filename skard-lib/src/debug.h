@@ -35,7 +35,7 @@ size_t disassembleSimpleInstruction(const char *name, size_t offset);
 
 size_t disassembleConstantInstruction(const char *name, Chunk *chunk, size_t offset);
 
-size_t disassembleLongConstantInstruction(const char *name, size_t offset);
+size_t disassembleLongConstantInstruction(const char *name, Chunk *chunk, size_t offset);
 
 /**
  * @brief Disassembles one unknown instruction (usually wrong byte).
@@ -49,6 +49,7 @@ size_t disassembleLongConstantInstruction(const char *name, size_t offset);
  */
 size_t disassembleUnknownInstruction(uint8_t instruction, size_t offset);
 
+void printName(const char *name);
 void printLineInfo(Chunk *chunk, size_t offset);
 void printValue(Value value);
 
