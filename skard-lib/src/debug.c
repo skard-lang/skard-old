@@ -102,7 +102,7 @@ size_t disassembleConstantInstruction(const char *name, Chunk *chunk, size_t off
 
     printf("\n");
 
-    return offset +2;
+    return offset + 2;
 }
 
 size_t disassembleLongConstantInstruction(const char *name, Chunk *chunk, size_t offset)

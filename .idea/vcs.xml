@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/out/debug/_deps/cmocka-src" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/out/release/_deps/cmocka-src" vcs="Git" />
   </component>
 </project>

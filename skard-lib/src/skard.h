@@ -8,6 +8,7 @@
 #define CSKARD_SKARD_H
 
 #include "chunk.h"
+#include "vm.h"
 
 #include "debug.h"
 

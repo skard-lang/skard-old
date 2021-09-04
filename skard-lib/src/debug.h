@@ -3,6 +3,10 @@
 
 #include "chunk.h"
 
+#ifdef CSKARD_DEBUG
+#define CSKARD_DEBUG_TRACE_EXECUTION
+#endif
+
 /**
  * @brief Iterates over chunk and disassembles its instructions.
  *
