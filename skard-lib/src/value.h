@@ -22,9 +22,9 @@ typedef struct
     ValueType type;
     union
     {
-        bool sk_boolean;
+        bool sk_bool;
         double sk_real;
-        int64_t sk_integer;
+        int64_t sk_int;
     } as;
 } Value;
 

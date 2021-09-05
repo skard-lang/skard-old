@@ -36,7 +36,19 @@ typedef enum
 {
     OP_RETURN,  //!< Return instruction
     OP_CONSTANT,
-    OP_CONSTANT_LONG
+    OP_CONSTANT_LONG,
+
+    OP_NEGATE_INT,
+    OP_ADD_INT,
+    OP_SUBTRACT_INT,
+    OP_MULTIPLY_INT,
+    OP_DIVIDE_INT,
+
+    OP_NEGATE_REAL,
+    OP_ADD_REAL,
+    OP_SUBTRACT_REAL,
+    OP_MULTIPLY_REAL,
+    OP_DIVIDE_REAL
 } OpCode;
 
 

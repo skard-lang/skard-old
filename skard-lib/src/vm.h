@@ -7,7 +7,6 @@
 
 typedef struct
 {
-    size_t count;
     size_t capacity;
     Value *stack;
     Value *stackTop;
@@ -15,12 +14,15 @@ typedef struct
 
 void initStack(Stack *stack);
 void freeStack(Stack *stack);
-void resetStack(Stack *stack);
+
+void pushStack(Stack *stack, Value value);
+Value popStack(Stack *stack);
 
 typedef struct
 {
     Chunk *chunk;
     uint8_t *ip;
+    Stack stack;
 } VM;
 
 typedef enum

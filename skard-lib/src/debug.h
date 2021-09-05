@@ -56,5 +56,6 @@ size_t disassembleUnknownInstruction(uint8_t instruction, size_t offset);
 void printName(const char *name);
 void printLineInfo(Chunk *chunk, size_t offset);
 void printValue(Value value);
+void printSpaces(int count);
 
 #endif //CSKARD_DEBUG_H

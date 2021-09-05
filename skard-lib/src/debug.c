@@ -80,6 +80,26 @@ size_t disassembleInstruction(Chunk *chunk, size_t offset)
             return disassembleConstantInstruction("OP_CONSTANT", chunk, offset);
         case OP_CONSTANT_LONG:
             return disassembleLongConstantInstruction("OP_LONG_CONSTANT", chunk, offset);
+        case OP_NEGATE_INT:
+            return disassembleSimpleInstruction("OP_NEGATE_INT", offset);
+        case OP_ADD_INT:
+            return disassembleSimpleInstruction("OP_ADD_INT", offset);
+        case OP_SUBTRACT_INT:
+            return disassembleSimpleInstruction("OP_SUBTRACT_INT", offset);
+        case OP_MULTIPLY_INT:
+            return disassembleSimpleInstruction("OP_MULTIPLY_INT", offset);
+        case OP_DIVIDE_INT:
+            return disassembleSimpleInstruction("OP_DIVIDE_INT", offset);
+        case OP_NEGATE_REAL:
+            return disassembleSimpleInstruction("OP_NEGATE_REAL", offset);
+        case OP_ADD_REAL:
+            return disassembleSimpleInstruction("OP_ADD_REAL", offset);
+        case OP_SUBTRACT_REAL:
+            return disassembleSimpleInstruction("OP_SUBTRACT_REAL", offset);
+        case OP_MULTIPLY_REAL:
+            return disassembleSimpleInstruction("OP_MULTIPLY_REAL", offset);
+        case OP_DIVIDE_REAL:
+            return disassembleSimpleInstruction("OP_DIVIDE_REAL", offset);
         default:
             return disassembleUnknownInstruction(instruction, offset);
     }
@@ -134,10 +154,7 @@ void printLineInfo(Chunk *chunk, size_t offset)
     size_t line = getLineChunk(chunk, offset);
     if ((offset != 0) && (line == getLineChunk(chunk, offset - 1)))
     {
-        for (int i = 0; i < (CSKARD_DEBUG_LINE_NUMBER_MAX_LENGTH - 1); i++)
-        {
-            printf(" ");
-        }
+        printSpaces(CSKARD_DEBUG_LINE_NUMBER_MAX_LENGTH - 1);
         printf("| ");
     }
     else
@@ -153,17 +170,25 @@ void printValue(Value value)
     switch (value.type)
     {
         case VAL_BOOL:
-            printf(value.as.sk_boolean ? "true" : "false");
+            printf(value.as.sk_bool ? "true" : "false");
             break;
         case VAL_REAL:
             printf("%g", value.as.sk_real);
             break;
         case VAL_INT:
-            printf("%lli", value.as.sk_integer);
+            printf("%lli", value.as.sk_int);
             break;
         default:
             break;
     }
 
     printf(" }");
+}
+
+void printSpaces(int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        printf(" ");
+    }
 }

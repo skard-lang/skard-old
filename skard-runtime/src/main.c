@@ -4,6 +4,7 @@
 
 
 #include "skard.h"
+#include <stdio.h>
 
 /**
  * @brief Skard Runtime entry point
@@ -22,22 +23,22 @@ int main(int argc, const char *argv[])
 
     initChunk(&c);
 
-    Value value = {.type = VAL_INT, .as.sk_integer = 204};
+    Value value1 = {.type = VAL_INT, .as.sk_int = 1};
+    Value value2 = {.type = VAL_INT, .as.sk_int = 3};
+    Value value3 = {.type = VAL_INT, .as.sk_int = 0};
 
-    for (int i = 0; i < 300; ++i)
-    {
-        writeConstant(&c, value, 2);
-    }
+    writeConstant(&c, value1, 10);
+    writeConstant(&c, value2, 10);
+    writeChunk(&c, OP_ADD_INT, 11);
+    writeConstant(&c, value3, 11);
+    writeChunk(&c, OP_DIVIDE_INT, 11);
+    writeChunk(&c, OP_NEGATE_INT, 11);
 
-    Value value2 = {.type = VAL_BOOL, .as.sk_boolean = true};
-    writeConstant(&c, value2, 2);
-
-    Value value3 = {.type = VAL_REAL, .as.sk_real = 12.4};
-    writeConstant(&c, value3, 3);
-
-    writeChunk(&c, OP_RETURN, 1);
+    writeChunk(&c, OP_RETURN, 12);
 
     disassembleChunk(&c, "main");
+
+    printf("\n");
 
     interpret(&vm, &c);
 
