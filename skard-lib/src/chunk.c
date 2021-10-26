@@ -14,7 +14,7 @@ void writeChunk(Chunk *chunk, uint8_t byte)
 {
     if (chunk->capacity < chunk->count + 1)
     {
-        int oldCapacity = chunk->capacity;
+        size_t oldCapacity = chunk->capacity;
         chunk->capacity = CSKARD_GROW_CAPACITY(oldCapacity);
         chunk->code = CSKARD_GROW_ARRAY(uint8_t, chunk->code, oldCapacity, chunk->capacity);
     }
